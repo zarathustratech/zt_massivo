@@ -1,0 +1,53 @@
+
+.wizard-steps
+  margin: 20px 0 50px
+  overflow: hidden
+  padding-left: 0
+
+  li
+    list-style-type: none
+    text-transform: uppercase
+    font-size: 10px
+    width: 33.33%
+    float: left
+    position: relative
+    text-align: center
+    color: #9aa0ac
+
+    span
+      width: 60px
+      line-height: 45px
+      display: block
+      font-size: 30px
+      color: #9aa0ac
+      background: #f5f7fb
+      margin: 0 auto
+      z-index: 2
+      position: relative
+
+    /*progressbar connectors*/
+    &:after
+      content: ''
+      width: 100%
+      height: 2px
+      background: rgba(0, 0, 0, 0.2)
+      position: absolute
+      left: -50%
+      top: 23px
+      z-index: 1
+
+    /* connector not needed before the first step */
+    &:first-child
+      &::after
+        content: none
+
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    &.active
+      color: #467fcf
+      font-weight: bold
+
+      span
+        color: #467fcf
+      &::after
+        background: #467fcf

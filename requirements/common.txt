@@ -1,0 +1,37 @@
+# Django
+Django==2.0.7
+django-environ==0.4.5
+
+# Databases
+psycopg2-binary==2.7.5
+
+# Rest framework
+djangorestframework==3.8.2
+coreapi==2.3.3
+
+# Authentication
+django-rest-auth==0.9.3
+django-allauth==0.36.0
+
+# Static Files
+django-webpack-loader==0.6.0
+django-compressor==2.2
+django-sass-processor==0.7
+boto3==1.9.13
+django-storages==1.7.1
+django-cors-headers==2.4.0
+
+# Data processing
+pandas==0.23.3
+pyxlsb==1.0.3
+xlrd==1.1.0
+
+# Admin
+django-nested-admin==3.0.21
+
+# Finite state machine
+django-fsm==2.6.0
+
+# Task management
+celery==4.2.1
+django-celery-results==1.0.1

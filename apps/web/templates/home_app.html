@@ -1,0 +1,27 @@
+{% extends 'home_base.html' %}
+
+{% block title %}NPLX by Zarathustra Technologies{% endblock %}
+
+{% block description %}NPL portfolio pricing made easy. Predict the value of your NPL portfolio with our propiertary machine learning algorithms and datasets.{% endblock %}
+
+{% block menu_options %}
+  <li><a href="#home-app">Home</a></li>
+  <li><a href="#clients">Our clients</a></li>
+  <li><a href="#product">Product</a></li>
+  <li><a href="#benefits">Benefits</a></li>
+  <li><a href="#how-works">How it works</a></li>
+  <li><a href="#our-team">Our team</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="{% url 'app' %}" class="login-btn">Sign in / sign up</a></li>
+{% endblock %}
+
+{% block sections %}
+  {% include 'sections/landing_app.html'%}
+  <!-- {% include 'sections/clients.html'%} -->
+  {% include 'sections/product.html'%}
+  {% include 'sections/benefits.html'%}
+  {% include 'sections/how-works.html'%}
+  <!-- {% include 'sections/our-team.html'%} -->
+  {% include 'sections/contact.html'%}
+  {% include 'sections/signup.html'%}
+{% endblock %}

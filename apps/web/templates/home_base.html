@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+{% load static %}
+{% load sass_tags %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" />
+    <meta name="theme-color" content="#4491E3"/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <link href="{% sass_src 'css/main.sass' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'node_modules/jquery-toast-plugin/dist/jquery.toast.min.css' %}" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <header id="header">
+      <div id="header-inner">
+        <div class="container">
+          <div class="grid">
+              <div class="grid__col grid__col--1-of-4 grid__col--s-1-of-2">
+                <img src="{% static 'img/logo_tall.png'%}" alt="NPLX by Zarathustra Technologies" id="header-logo"/>
+              </div>
+              <div class="grid__col grid__col--3-of-4 grid__col--s-1-of-2">
+                <nav id="navigation">
+                  <button id="toggle-menu-btn">/ Menu</button>
+                  <ul id="menu">
+                    {% block menu_options %}{% endblock %}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {% block sections %}
+
+    {% endblock %}
+    <footer>
+      <div class="container">
+        <div class="grid">
+          <div class="grid__col--2-of-2">
+              <p class="copyright">Copyright © <script type="text/javascript">
+                var d = new Date()
+                document.write(d.getFullYear())
+                </script> Zarathustra Technologies</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'node_modules/jquery/dist/jquery.min.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'node_modules/jquery-toast-plugin/dist/jquery.toast.min.js' %}" ></script>
+    <script>
+      window.onscroll = function() {stickyHeader()};
+      // Get the header
+      var header = document.getElementById('header');
+
+      // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+      function stickyHeader() {
+        if (window.pageYOffset > 200) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
+
+      var menu = document.getElementById('menu');
+
+      document.getElementById("toggle-menu-btn").addEventListener("click", toggleMenu);
+
+      var links = menu.getElementsByTagName('a')
+      for(var i =0; i < links.length; i++){
+        links[i].addEventListener('click', toggleMenu);
+      }
+
+      function toggleMenu() {
+        if (menu.classList.contains('open')) {
+          menu.classList.remove("open");
+        } else {
+          menu.classList.add("open");
+        }
+      }
+
+      /*** SCROLLING EFFECTS ***/
+      $(document).ready(function () {
+        $(document).on("scroll", onScroll);
+
+        //smoothscroll
+        $('a[href^="#"]').on('click', function (e) {
+          e.preventDefault();
+          $(document).off("scroll");
+
+          $('a').each(function () {
+            $(this).removeClass('active');
+          })
+          $(this).addClass('active');
+
+          var target = this.hash,
+              menu = target;
+          $target = $(target);
+          $('html, body').stop().animate({
+              'scrollTop': $target.offset().top+2
+          }, 500, 'swing', function () {
+              window.location.hash = target;
+              $(document).on("scroll", onScroll);
+          });
+        });
+      });
+
+      function onScroll(event){
+        var scrollPos = $(document).scrollTop();
+        $('#menu li a').each(function () {
+          var $currLink = $(this);
+          var refId = $currLink.attr("href");
+          if (!refId.startsWith('#')) return
+          var $refElement = $(refId);
+          if ($refElement.get().length > 0) {
+            if ($refElement.position().top - 120 <= scrollPos && $refElement.position().top + $refElement.height() + 120 > scrollPos) {
+              $('#menu li').removeClass("active");
+              $currLink.closest('li').addClass("active");
+            }
+            else{
+              $currLink.closest('li').removeClass("active");
+            }
+          }
+        });
+      }
+
+      /*** IMAGE LAZY LOADING ***/
+      $(document).ready(function(){
+        $('img').each(function(){
+          let dataSrc = $(this).data('src');
+          if(dataSrc != undefined && dataSrc != null && dataSrc !== ''){
+            $(this).attr('src', dataSrc);
+          }
+        })
+      })
+    </script>
+    {% if messages %}
+    <script type="text/javascript">
+      {% for message in messages %}
+        $.toast({
+          text : "{{ message }}",
+          showHideTransition : 'slide',  // It can be plain, fade or slide
+          {% if message.tags == 'success' %}
+            heading: 'Success',
+            icon: 'success',
+          {% endif %}
+          {% if message.tags == 'error' %}
+            heading: 'Error',
+            icon: 'error',
+          {% endif %}              // Background color for toast
+          textColor : 'white',            // text color
+          allowToastClose : true,       // Show the close button or not
+          hideAfter : 5000,              // `false` to make it sticky or time in miliseconds to hide after
+          stack : 5,                     // `fakse` to show one stack at a time count showing the number of toasts that can be shown at once
+          textAlign : 'left',            // Alignment of text i.e. left, right, center
+          position : 'top-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
+        })
+      {% endfor %}
+    </script>
+  {% endif %}
+  </body>
+</html>

@@ -1,0 +1,61 @@
+@import '../node_modules/normalize.css/normalize.css'
+@import '../node_modules/toast-grid/css/grid.css'
+
+@import 'variables'
+@import 'fonts'
+
+
+html
+  height: 100%
+
+body
+  color: $text_color
+  background: white
+  font-family: 'Open-Sans', sans-serif
+  font-size: 16px
+  line-height: 1.6em
+  min-height: 100%
+  height: 100%
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'Dolce-Vita', sans-serif;
+  font-weight: 300
+  color: $title_color
+
+h3
+  font-size: 45px
+  text-align: center
+  line-height: 1.1em
+
+h4
+  font-size: 30px
+  text-align: center
+
+a
+  color: $primary_color
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+.container
+  max-width: 1000px
+  margin: 0 auto
+
+
+*:focus
+  outline: none
+
+img
+  max-width: 100%
+
+
+@media (max-width: 480px)
+  .container
+    margin: 0 20px
+
+
+@import 'header'
+@import 'landing'
+@import 'buttons'
+@import 'forms'
+@import 'sections'

@@ -1,0 +1,380 @@
+@import url(../node_modules/normalize.css/normalize.css);
+@import url(../node_modules/toast-grid/css/grid.css);
+@font-face {
+  font-family: 'Dolce-Vita';
+  src: url("../fonts/Dolce-Vita/Dolce-Vita.ttf.woff") format("woff"), url("../fonts/Dolce-Vita/Dolce-Vita.ttf.svg#Dolce-Vita") format("svg"), url("../fonts/Dolce-Vita/Dolce-Vita.ttf.eot"), url("../fonts/Dolce-Vita/Dolce-Vita.eot?#iefix") format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto; }
+
+@font-face {
+  font-family: 'Dolce-Vita';
+  src: url("../fonts/Dolce-Vita-Bold/Dolce-Vita-Bold.ttf.woff") format("woff"), url("../fonts/Dolce-Vita-Bold/Dolce-Vita-Bold.ttf.svg#Dolce-Vita-Bold") format("svg"), url("../fonts/Dolce-Vita-Bold/Dolce-Vita-Bold.ttf.eot"), url("../fonts/Dolce-Vita-Bold/Dolce-Vita-Bold.eot?#iefix") format("embedded-opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: auto; }
+
+@font-face {
+  font-family: 'Dolce-Vita';
+  src: url("../fonts/Dolce-Vita-Light/Dolce-Vita-Light.ttf.woff") format("woff"), url("../fonts/Dolce-Vita-Light/Dolce-Vita-Light.ttf.svg#Dolce-Vita-Light") format("svg"), url("../fonts/Dolce-Vita-Light/Dolce-Vita-Light.ttf.eot"), url("../fonts/Dolce-Vita-Light/Dolce-Vita-Light.eot?#iefix") format("embedded-opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto; }
+
+@font-face {
+  font-family: 'Open-Sans';
+  src: url("../fonts/Open-Sans/Open-Sans.ttf.woff") format("woff"), url("../fonts/Open-Sans/Open-Sans.ttd.svg#Open-Sans") format("svg"), url("../fonts/Open-Sans/Open-Sans.ttf.eot"), url("../fonts/Open-Sans/Open-Sans.ttf.eot?#iefix") format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto; }
+
+html {
+  height: 100%; }
+
+body {
+  color: #666;
+  background: white;
+  font-family: 'Open-Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6em;
+  min-height: 100%;
+  height: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Dolce-Vita', sans-serif;
+  font-weight: 300;
+  color: #212121; }
+
+h3 {
+  font-size: 45px;
+  text-align: center;
+  line-height: 1.1em; }
+
+h4 {
+  font-size: 30px;
+  text-align: center; }
+
+a {
+  color: #4491E3;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto; }
+
+*:focus {
+  outline: none; }
+
+img {
+  max-width: 100%; }
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0 20px; } }
+
+#header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: background 1s; }
+  #header #header-inner {
+    transition: margin 1s;
+    margin: 50px 0; }
+  #header #header-logo {
+    height: 64px;
+    transition: height, margin-top 1s; }
+  #header.sticky {
+    background: white; }
+    #header.sticky #header-inner {
+      margin: 10px 0; }
+    #header.sticky #header-logo {
+      margin-top: 5px;
+      height: 45px; }
+
+#navigation {
+  float: right;
+  font-family: 'Dolce-Vita', sans-serif;
+  font-weight: 400;
+  font-size: 14px; }
+  #navigation #toggle-menu-btn {
+    display: none; }
+  #navigation #menu {
+    padding: 0;
+    list-style-type: none; }
+    #navigation #menu li {
+      display: inline;
+      margin-left: 5px; }
+      #navigation #menu li a {
+        padding: 10px 10px;
+        text-decoration: none;
+        color: #212121;
+        border-bottom: 2px solid transparent;
+        transition: color, border 0.2s; }
+        #navigation #menu li a:hover {
+          text-decoration: none;
+          color: #4491E3;
+          border-color: #4491E3 !important; }
+        #navigation #menu li a.login-btn {
+          border: 1px solid #545454;
+          border-radius: 20px; }
+      #navigation #menu li.active a {
+        color: #4491E3;
+        border-bottom: 2px solid #4491E3; }
+
+@media (max-width: 480px) {
+  #header #header-logo {
+    height: 50px; }
+  #header #header-inner {
+    margin: 10px 0; }
+  #navigation #toggle-menu-btn {
+    display: inline;
+    font-family: 'Dolce-Vita', sans-serif;
+    font-size: 20px;
+    margin-top: 8px;
+    background: none;
+    border: none;
+    cursor: pointer; }
+    #navigation #toggle-menu-btn:hover {
+      color: #4491E3; }
+  #navigation #menu {
+    display: none; }
+    #navigation #menu.open {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 30px 20px;
+      display: block;
+      background: white; }
+      #navigation #menu.open li {
+        display: block;
+        margin-bottom: 30px;
+        text-align: right; } }
+
+#home-app {
+  height: 100%;
+  min-height: 600px;
+  background: url("../img/backgrounds/luca-bravo-198061-unsplash.jpg");
+  margin: 0 auto;
+  background-position: top top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden; }
+
+#home-company {
+  height: 100%;
+  min-height: 600px;
+  background: url("../img/backgrounds/luca-bravo-198061-unsplash.jpg");
+  margin: 0 auto;
+  background-position: top top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden; }
+
+#landing-message {
+  padding-top: 230px; }
+  #landing-message h2 {
+    font-size: 45px;
+    line-height: 1.3em;
+    margin-bottom: 20px; }
+  #landing-message p {
+    font-size: 16px;
+    line-height: 1.6em;
+    font-weight: 300;
+    margin-bottom: 20px; }
+
+#photo-credits {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 10px; }
+  #photo-credits a {
+    color: #666; }
+
+@media (max-width: 480px) {
+  #landing {
+    background-position: 38% 0%;
+    height: 550px; }
+  #landing-message {
+    padding-top: 140px; } }
+
+.main-btn {
+  border: 1px solid #4491E3;
+  background: #4491E3;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 14px;
+  transition: all 0.2s; }
+  .main-btn:hover {
+    color: #4491E3;
+    background: transparent;
+    text-decoration: none; }
+
+.contact-form .field {
+  margin-bottom: 15px; }
+
+.contact-form label {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #212121; }
+
+.contact-form input[type="text"] {
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #666; }
+
+.contact-form textarea {
+  padding: 15px;
+  width: 100%;
+  border: 1px solid #ddd; }
+
+/******** GENERAL **********/
+.section {
+  padding: 120px 0; }
+
+.section-header {
+  padding: 0 0 70px;
+  text-align: center; }
+  .section-header h3 {
+    margin: 0 0 20px;
+    line-height: 1em; }
+
+/******** PRODUCT **********/
+#product {
+  height: 500px;
+  background: url("../img/backgrounds/desktop.jpg");
+  margin: 0 auto;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+
+.features {
+  margin-top: 60px;
+  padding-right: 20px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 1.5em;
+  color: #212121; }
+
+@media (max-width: 480px) {
+  .features {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: right; } }
+
+/******** BENEFITS **********/
+.benefit-img-container {
+  height: 100px;
+  margin: 50px 0; }
+  .benefit-img-container .benefit-img {
+    width: 30%;
+    margin: 0 35%; }
+    .benefit-img-container .benefit-img.binocular {
+      margin-top: 18px; }
+
+.benefit-text {
+  padding: 0 15px;
+  text-align: center; }
+
+/******** TEAM **********/
+.member {
+  margin-bottom: 30px; }
+  .member .picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; }
+  .member .name {
+    font-weight: normal;
+    margin-bottom: 5px;
+    color: #212121; }
+  .member .role {
+    margin: 0;
+    color: #666;
+    text-transform: uppercase;
+    line-height: 1em;
+    font-family: 'Dolce-Vita', sans-serif;
+    font-weight: 400; }
+  .member .bio {
+    line-height: 1.5em;
+    padding-right: 15px;
+    font-size: 12px; }
+
+/******** SIGN UP **********/
+#signup {
+  height: 300px;
+  background: url("../img/backgrounds/kimon-maritz-183501-unsplash.jpg");
+  margin: 0 auto;
+  background-position: top 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+  #signup p {
+    text-align: center; }
+
+/******** CLIENTS **********/
+#clients {
+  margin: 0 auto;
+  position: relative;
+  padding: 0; }
+  #clients::after {
+    content: "";
+    background: url("../img/backgrounds/ameen-fahmy-525674-unsplash.jpg");
+    background-position: 0 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; }
+  #clients h3, #clients p {
+    color: white; }
+
+#clients-shadow {
+  height: 100%;
+  width: 100%;
+  padding: 120px 0;
+  background: rgba(68, 145, 227, 0.5);
+  background: -webkit-linear-gradient(legacy-direction(rgba(68, 145, 227, 0.9)), rgba(68, 145, 227, 0.5));
+  background: linear-gradient(rgba(68, 145, 227, 0.9), rgba(68, 145, 227, 0.5)); }
+
+.client-img {
+  width: 60%;
+  margin: 0 20%;
+  -webkit-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.1)); }
+
+/******** CONTACT **********/
+#contact {
+  padding: 250px 0; }
+  #contact .section-header {
+    margin-top: 15px; }
+    #contact .section-header h3, #contact .section-header p {
+      text-align: right;
+      padding-right: 40px; }
+
+/******** FOOTER **********/
+.copyright {
+  color: #ddd;
+  font-size: 12px;
+  padding: 30px 0 60px;
+  text-align: center; }
+
+/*# sourceMappingURL=../../../../../../../static/css/main.css.map */

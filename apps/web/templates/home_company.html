@@ -1,0 +1,20 @@
+{% extends 'home_base.html' %}
+
+{% block title %}Zarathustra Technologies{% endblock %}
+
+{% block description %}{% endblock %}
+
+
+{% block menu_options %}
+  <li><a href="#home-company">Home</a></li>
+  <li><a href="#product">Our products</a></li>
+  <li><a href="#benefits">Benefits</a></li>
+  <li><a href="#contact">Contact</a></li>
+{% endblock %}
+
+{% block sections %}
+  {% include 'company/landing.html'%}
+  {% include 'company/product.html'%}
+  {% include 'company/benefits.html'%}
+  {% include 'sections/contact.html'%}
+{% endblock %}

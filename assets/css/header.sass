@@ -1,0 +1,93 @@
+@import 'variables'
+
+
+$header_transition_duration: 1s
+$menu_transition_duration: 0.2s
+
+#header
+  position: fixed
+  width: 100%
+  top: 0
+  z-index: 1000
+  transition: background $header_transition_duration
+  #header-inner
+    transition: margin $header_transition_duration
+    margin: 50px 0
+  #header-logo
+    height: 64px
+    transition: height, margin-top $header_transition_duration
+
+  &.sticky
+    background: rgba(255, 255, 255, 1)
+    #header-inner
+      margin: 10px 0
+    #header-logo
+      margin-top: 5px
+      height: 45px
+
+#navigation
+  float: right
+  font-family: 'Dolce-Vita', sans-serif;
+  font-weight: 400
+  font-size: 14px
+  #toggle-menu-btn
+    display: none
+
+  #menu
+    padding: 0
+    list-style-type: none
+    li
+      display: inline
+      margin-left: 5px
+      a
+        padding: 10px 10px
+        text-decoration: none
+        color: $title_color
+        border-bottom: 2px solid transparent
+        transition: color, border $menu_transition_duration
+        &:hover
+          text-decoration: none
+          color: $primary_color
+          border-color: $primary_color !important
+        &.login-btn
+          border: 1px solid lighten($title_color, 20%)
+          border-radius: 20px
+      &.active
+        a
+          color: $primary_color
+          border-bottom: 2px solid $primary_color
+
+@media (max-width: 480px)
+  #header
+    #header-logo
+      height: 50px
+    #header-inner
+      margin: 10px 0
+
+  #navigation
+    #toggle-menu-btn
+      display: inline
+      font-family: 'Dolce-Vita', sans-serif;
+      font-size: 20px
+      margin-top: 8px
+      background: none
+      border: none
+      cursor: pointer
+      &:hover
+        color: $primary_color
+    #menu
+      display: none
+      &.open
+        position: fixed
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        margin: 0
+        padding: 30px 20px
+        display: block
+        background: white
+        li
+          display: block
+          margin-bottom: 30px
+          text-align: right

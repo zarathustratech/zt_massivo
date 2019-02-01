@@ -1,0 +1,29 @@
+{% load static %}
+<section id="contact" class="section">
+    <div class="container">
+        <div class="grid">
+            <div class="grid__col grid__col--1-of-2">
+                <div class="section-header contact">
+                    <h3>Contact us</h3>
+                    <p>If you have any question about anything, just let us know. One of our nerds will get in touch with you ASAP.</p>
+                </div>
+            </div>
+            <div class="grid__col grid__col--1-of-2">
+                <form class="contact-form" method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="text" name="email" />
+                    </div>
+                    <div class="field">
+                        <label>Message</label>
+                        <textarea name="message"></textarea>
+                    </div>
+                    <div class="field">
+                        <input type="submit" class="main-btn" value="Send message"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
