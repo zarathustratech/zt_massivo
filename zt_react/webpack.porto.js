@@ -89,7 +89,7 @@ module.exports = {
       filename: 's-[hash].css',
       chunkFilename: 's-[hash]-[id].css',
     }),
-    new BundleTracker({ filename: './webpack-stats.poc.json' }),
+    new BundleTracker({ filename: './webpack-stats.porto.json' }),
   ],
 
   optimization: {
