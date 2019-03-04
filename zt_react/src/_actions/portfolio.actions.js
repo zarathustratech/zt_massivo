@@ -63,15 +63,16 @@ const fetchLoans = (code) => {
           const loans = d3.csvParse(response.data, d => (
             {
                 ngr_cd: d.ngr_cd,
-                status: d.status,
-                num_events: d.num_events,
-                prediction: d.prediction,
-                confidence_score: d.confidence_score,
-                im_acc_cassa: d.im_acc_cassa,
-                im_util_cassa: d.im_util_cassa,
-                util_rate: d.util_rate,
-                latitude: +d.latitude,
-                longitude: +d.longitude,
+                cli_type: d.cli_type,
+                init_date: moment(d.init_date, 'YYYY-MM-DD'),
+                end_date: moment(d.end_date,'YYYY-MM-DD'),
+                init_balance: +d.init_balance,
+                default_interest: +d.default_interest,
+                net_balance: +d.net_balance,
+                real_guarantee: +d.real_guarantee,
+                personal_guarantee: +d.personal_guarantee,
+                other_guarantee: +d.other_guarantee,
+                flag_forb: d.flag_forb,
             }
           ));
           dispatch(success(loans));

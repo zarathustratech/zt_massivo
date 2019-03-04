@@ -45,22 +45,6 @@ class PortfolioDashboard extends Component {
       <div className="container">
         <PageTitle title={portfolio.name} subtitle={portfolio.code} />
         <div className="row row-cards">
-          <div className="col-6">
-            <LoanMapCard
-              onMarkerClicked={this.onMarkerClicked}
-              onBoundsChange={this.onBoundsChange}
-            />
-          </div>
-          <div className="col-6">
-            <div className="row">
-              <div className="col-6">
-                <PerformSubjectsCard />
-              </div>
-              <div className="col-6">
-                <DefaultSubjectsCard />
-              </div>
-            </div>
-          </div>
           <div className="col-12">
             <LoansTableCard />
           </div>

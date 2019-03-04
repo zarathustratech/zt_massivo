@@ -80,47 +80,38 @@ class LoanListAPIView(APIView):
         try:
             portfolio = Portfolio.objects.get(code=self.kwargs['code'])
             uploaded_file = portfolio.uploadedfile_set.all().latest()
-            file_field = uploaded_file.file
-            s = str(file_field.read(), 'utf-8')
-            data = StringIO(s)
-            uploaded_df = pd.read_csv(data)
-            dashboard_df = uploaded_df[['cd_ngr_unif', 'status', 'num_events', 'prediction', 'confidence_score',
-                                        'im_acc_cassa', 'im_util_cassa', 'util_rate', 'latitude', 'longitude']]
 
-            coord_idxs = np.random.randint(low=0, high=10, size=dashboard_df.shape[0])
-            ten_italy_coordinates = [[43.769562, 11.255814],
-                                     [37.075474, 15.286586],
-                                     [45.438759, 12.327145],
-                                     [41.902782, 12.496366],
-                                     [42.349850, 13.399509],
-                                     [40.725925, 8.555683],
-                                     [41.230618, 16.293224],
-                                     [43.880852, 10.775525],
-                                     [43.548473, 10.310567],
-                                     [44.414165, 8.942184]]
+            # Dev environment
+            file_path = uploaded_file.file.path
+            uploaded_df = pd.read_csv(file_path)
 
-            rows = []
-            for index, row in dashboard_df.iterrows():
-                idx = coord_idxs[index]
-                row['latitude'] = ten_italy_coordinates[idx][0]
-                row['longitude'] = ten_italy_coordinates[idx][1]
-                rows.append(tuple(row))
+            # Digital Ocean environments
+            # file_field = uploaded_file.file
+            # s = str(file_field.read(), 'utf-8')
+            # data = StringIO(s)
+            # uploaded_df = pd.read_csv(data)
+            dashboard_df = uploaded_df[['cd_ngr', 'ty_cliente', 'dt_ini_fase_x', 'dt_fine_fase_x', 'im_saldo_ini',
+                                        'im_int_mora_ini', 'im_saldo_netto_mora_ini', 'im_gar_reali_ini',
+                                        'im_gar_person_ini', 'im_gar_altre_ini', 'fg_cli_forb_ini']]
 
             headers = [
                 'ngr_cd',
-                'status',
-                'num_events',
-                'prediction',
-                'confidence_score',
-                'im_acc_cassa',
-                'im_util_cassa',
-                'util_rate',
-                'latitude',
-                'longitude',
+                'cli_type',
+                'init_date',
+                'end_date',
+                'init_balance',
+                'default_interest',
+                'net_balance',
+                'real_guarantee',
+                'personal_guarantee',
+                'other_guarantee',
+                'flag_forb',
             ]
             csv_rows = [','.join(headers)]
+
+            rows = [tuple(x) for x in dashboard_df.values]
             for row in rows:
-                csv_row = "%i,%i,%i,%i,'%i','%.2f','%.2f','%f',%f,%f" % row
+                csv_row = "%i,%s,%s,%s,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%i" % row
                 csv_rows.append(csv_row)
 
             return Response(

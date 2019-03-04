@@ -145,7 +145,7 @@ class PortfolioListPage extends Component {
                 ? <Redirect to="/portfolio/upload" />
                 : (
                   <div>
-                    <PageTitle title="UTP portfolios" btn={btn} />
+                    <PageTitle title="Portfolios" btn={btn} />
                     <PortfolioTable portfolios={portfolios} />
                   </div>
                 )}

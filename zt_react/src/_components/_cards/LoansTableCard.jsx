@@ -12,7 +12,7 @@ class LoanTable extends Component {
     sortBy: 'id',
     sortDir: 'asc',
     page: 1,
-    pageSize: 10,
+    pageSize: 20,
   }
 
   onSortClicked(key) {
@@ -94,38 +94,62 @@ class LoanTable extends Component {
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)}/>
                     <SortHeader
-                      name="Status"
-                      sortKey="status"
+                      name="Client Type"
+                      sortKey="cli_type"
                       sortingBy={sortBy}
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)} />
                     <SortHeader
-                      name="Num Events"
-                      sortKey="num_events"
+                      name="Init Date"
+                      sortKey="init_date"
                       sortingBy={sortBy}
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)} />
                     <SortHeader
-                      name="Allocated credit"
-                      sortKey="im_acc_cassa"
+                      name="End Date"
+                      sortKey="end_date"
                       sortingBy={sortBy}
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)} />
                     <SortHeader
-                      name="Utilized credit"
-                      sortKey="im_util_cassa"
+                      name="Initial Balance"
+                      sortKey="init_balance"
                       sortingBy={sortBy}
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)} />
                     <SortHeader
-                      name="Alloc/Util rate"
-                      sortKey="util_rate"
+                      name="Default Interests"
+                      sortKey="default_interest"
                       sortingBy={sortBy}
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)} />
                     <SortHeader
-                      name="3 mon prediction"
-                      sortKey="predictions"
+                      name="Net Balance"
+                      sortKey="net_balance"
+                      sortingBy={sortBy}
+                      sortingDir={sortDir}
+                      sortClicked={this.onSortClicked.bind(this)} />
+                    <SortHeader
+                      name="Real Guarantee"
+                      sortKey="real_guarantee"
+                      sortingBy={sortBy}
+                      sortingDir={sortDir}
+                      sortClicked={this.onSortClicked.bind(this)} />
+                    <SortHeader
+                      name="Personal Guarantee"
+                      sortKey="personal_guarantee"
+                      sortingBy={sortBy}
+                      sortingDir={sortDir}
+                      sortClicked={this.onSortClicked.bind(this)} />
+                    <SortHeader
+                      name="Other Guarantee"
+                      sortKey="other_guarantee"
+                      sortingBy={sortBy}
+                      sortingDir={sortDir}
+                      sortClicked={this.onSortClicked.bind(this)} />
+                    <SortHeader
+                      name="Forbearance"
+                      sortKey="flag_forb"
                       sortingBy={sortBy}
                       sortingDir={sortDir}
                       sortClicked={this.onSortClicked.bind(this)} />
