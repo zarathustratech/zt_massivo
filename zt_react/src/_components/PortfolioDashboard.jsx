@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PageTitle from './PageTitle';
 import {
-  PerformSubjectsCard, DefaultSubjectsCard, LoanMapCard, LoansTableCard,
+  LoansTableCard,
 } from './_cards';
 
 
