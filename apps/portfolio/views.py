@@ -82,14 +82,14 @@ class LoanListAPIView(APIView):
             uploaded_file = portfolio.uploadedfile_set.all().latest()
 
             # Dev environment
-            file_path = uploaded_file.file.path
-            uploaded_df = pd.read_csv(file_path)
+            #file_path = uploaded_file.file.path
+            #uploaded_df = pd.read_csv(file_path)
 
             # Digital Ocean environments
-            # file_field = uploaded_file.file
-            # s = str(file_field.read(), 'utf-8')
-            # data = StringIO(s)
-            # uploaded_df = pd.read_csv(data)
+            file_field = uploaded_file.file
+            s = str(file_field.read(), 'utf-8')
+            data = StringIO(s)
+            uploaded_df = pd.read_csv(data)
             dashboard_df = uploaded_df[['cd_ngr', 'ty_cliente', 'dt_ini_fase_x', 'dt_fine_fase_x', 'im_saldo_ini',
                                         'im_int_mora_ini', 'im_saldo_netto_mora_ini', 'im_gar_reali_ini',
                                         'im_gar_person_ini', 'im_gar_altre_ini', 'fg_cli_forb_ini']]
