@@ -33,5 +33,5 @@ django-nested-admin==3.0.21
 django-fsm==2.6.0
 
 # Task management
-celery==4.2.1
+celery==5.2.2
 django-celery-results==1.0.1
