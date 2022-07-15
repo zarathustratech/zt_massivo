@@ -34,4 +34,4 @@ django-fsm==2.6.0
 
 # Task management
 celery==4.2.1
-django-celery-results==1.0.1
+django-celery-results==2.4.0
