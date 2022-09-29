@@ -35,7 +35,7 @@
   "dependencies": {
     "@mapbox/geo-viewport": "^0.4.0",
     "axios": "^0.18.0",
-    "d3": "^5.7.0",
+    "d3": "^7.6.1",
     "history": "^4.7.2",
     "icheck": "^1.0.2",
     "mapbox-gl": "^0.47.0",
